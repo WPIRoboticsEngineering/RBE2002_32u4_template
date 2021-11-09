@@ -32,7 +32,7 @@ void setup()
   imu.setGyroDataOutputRate(LSM6::ODR13);
 
   // Set the accelerometer full scale and data rate
-  imu.setAccDataOutputRate(LSM6::ODR13);
+  imu.setAccDataOutputRate(LSM6::ODR104);
 }
 
 bool showAcc = true;
@@ -40,7 +40,7 @@ bool showGyro = false;
 
 void loop()
 {
-  if(buttonA.isPressed()) motors.setEfforts(200, 200);
+  if(buttonA.isPressed()) motors.setEfforts(100, -100);
   else motors.setEfforts(0,0);
 
   if(buttonB.getSingleDebouncedPress()) showAcc = !showAcc;
@@ -50,8 +50,8 @@ void loop()
   {
     imu.read();
 
-    Serial.print(millis());
-    Serial.print('\t');
+    // Serial.print(millis());
+    // Serial.print('\t');
 
     if(showAcc)
     {
